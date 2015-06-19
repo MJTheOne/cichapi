@@ -3,8 +3,6 @@
 
     class DefaultController extends CI_Controller {
 
-        public $ciApi = '';
-
         public function index() {
             $this->load->library('ClickerHeroes/clickerheroesapi');
 
