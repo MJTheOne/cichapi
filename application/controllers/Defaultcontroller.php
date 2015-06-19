@@ -6,6 +6,7 @@
         public function index() {
             $this->load->library('ClickerHeroes/ClickerHeroesApi');
 
-            var_dump($this->clickerheroesapi->getStaticData('salt'));
+            //var_dump($this->clickerheroesapi->getStaticData('salt'));
+            $this->load->view('home');
         }
     }
