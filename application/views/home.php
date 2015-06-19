@@ -6,6 +6,6 @@
     </head>
 
     <body>
-        <?php echo $this->load->view('content') ?>
+        <?php $this->load->view('content') ?>
     </body>
 </html>
