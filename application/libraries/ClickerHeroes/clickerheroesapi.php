@@ -8,7 +8,7 @@
  *	@author 	Marius Posthumus <mjtheone@gmail.com>
  **/
 
-class Clickerheroesapi {
+class ClickerHeroesApi {
     /**
      *	Encrypted save
      *
