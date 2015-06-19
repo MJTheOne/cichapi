@@ -8,7 +8,7 @@
  *	@author 	Marius Posthumus <mjtheone@gmail.com>
  **/
 
-class ClickerHeroesApi {
+class Clickerheroesapi {
     /**
      *	Encrypted save
      *
@@ -63,7 +63,8 @@ class ClickerHeroesApi {
      *	@return $this
      **/
     public function getStaticData($type) {
-        $type = strtolower($type);
+        $tmpArr = array();
+        $type   = strtolower($type);
 
         switch($type) {
             case 'salt':
