@@ -98,6 +98,11 @@ class ClickerHeroesApi {
         return $this->decrypted;
     }
 
+    /**
+     *	Decrypt the save file
+     *
+     *	@return $this
+     **/
     public function hackIt() {
         $result = explode($this->delimiter, $this->encrypted);
 
@@ -117,6 +122,22 @@ class ClickerHeroesApi {
                 return $this;
             }
         }
+    }
+
+    public function encryptIt($val) {
+        $encoded    = base64_encode(json_encode($val));
+        $hash       = md5($encoded . $this->getCurrentSalt());
+        $newSave    = '';
+
+        // Sprinkle it again
+        for ($i = 0; $i < strlen($encoded); $i++) {
+            $newSave .= $encoded[$i].$this->randomCharacter();
+        }
+
+        $newSave .= $this->getCurrentDelimiter();
+        $newSave .= $hash;
+
+        return $newSave;
     }
 
     /**
@@ -151,5 +172,34 @@ class ClickerHeroesApi {
         }*/
 
         return $this;
+    }
+
+    /**
+     * Returns latest salt
+     *
+     * @return string
+     */
+    private function getCurrentSalt() {
+        return end($this->knownSalts)->val;
+    }
+
+    /**
+     * Returns latest delimiter
+     *
+     * @return string
+     */
+    private function getCurrentDelimiter() {
+        return end($this->knownDelimiters)->val;
+    }
+
+    /**
+     * Sprinkle function
+     *
+     * @return string
+     */
+    private function randomCharacter()
+    {
+        $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        return $characters[mt_rand(0,strlen($characters)-1)];
     }
 }

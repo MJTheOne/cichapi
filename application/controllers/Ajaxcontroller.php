@@ -16,11 +16,18 @@
             echo $this->load->view('formSteps/1_start.php', null, true);
         }
 
-        private function decode($post) {
+        private function decodeIt($post) {
             $save = $post['save'];
             $this->load->library('ClickerHeroes/ClickerHeroesApi');
 
             echo json_encode($this->clickerheroesapi->decrypt($save));
+        }
+
+        private function encodeIt($post) {
+            $json = $post['json'];
+            $this->load->library('ClickerHeroes/ClickerHeroesApi');
+
+            var_dump($this->clickerheroesapi->encryptIt($json));
         }
 
         public function dataSubmit() {
