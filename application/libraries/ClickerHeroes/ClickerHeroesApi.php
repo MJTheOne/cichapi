@@ -113,6 +113,7 @@ class ClickerHeroesApi {
                 $this->salt = $salt;
                 $this->decrypted = json_decode(base64_decode($check));
 
+
                 return $this;
             }
         }
@@ -127,7 +128,11 @@ class ClickerHeroesApi {
         $this->delimiter = substr($this->encrypted, strlen($this->encrypted) - 48, 16);
 
         // If the delimiter is unknown add it to the delimiter JSON file for later use
-        foreach($this->knownDelimiters as $delim) {
+        // TODO: fixthis
+        /*foreach($this->knownDelimiters as $delim) {
+            var_dump($delim->val);
+            var_dump($this->knownDelimiters);
+            var_dump(in_array($delim->val, $this->knownDelimiters));die;
             if(!in_array($delim->val, $this->knownDelimiters)) {
                 $data 		= array(
                     "version" 	=> "", // get version?
@@ -143,7 +148,7 @@ class ClickerHeroesApi {
 
                 break;
             }
-        }
+        }*/
 
         return $this;
     }

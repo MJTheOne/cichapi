@@ -1,4 +1,3 @@
-<IfModule mod_rewrite.c>
 RewriteEngine On
 # !IMPORTANT! Set your RewriteBase here and don't forget trailing and leading
 # slashes.
@@ -7,6 +6,7 @@ RewriteEngine On
 # then use
 # RewriteBase /mypage/test1/
 RewriteBase /
+RewriteCond $1 !^(index\.php|assets|images|robots\.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?/$1 [L]
